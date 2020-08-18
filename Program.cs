@@ -50,12 +50,17 @@ namespace BoostStrategy
                 string player = Console.ReadLine();
 
                 Type p = Type.GetType("BoostStrategy." + player);
+                try
+                {
+                    PlayerBoost pBoost = (PlayerBoost)Activator.CreateInstance(p);
+                    boostMethod.SetPlayerBoost(pBoost);
+                    boostMethod.Boost();
 
-                PlayerBoost pBoost = (PlayerBoost)Activator.CreateInstance(p);
-
-                boostMethod.SetPlayerBoost(pBoost);
-                boostMethod.Boost();
-
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                }
                 Console.WriteLine(" = = = = = = = = ");
                
             } 
