@@ -49,6 +49,7 @@ namespace BoostStrategy
                 Console.WriteLine("Do you want to temporarily boost your player's 'Health', 'Damage', or 'Shield'?");
                 string player = Console.ReadLine();
 
+                //namespace used to collect data from user input based on template for data in the abstract/sub classes
                 Type p = Type.GetType("BoostStrategy." + player);
                 try
                 {
@@ -68,11 +69,13 @@ namespace BoostStrategy
         }
     }
 
+    //abstract class acts to pass functionality to sub-classes
     abstract class PlayerBoost
     {
         public abstract void Boost(string player);
     }
 
+    //3 subclasses return a different outcome but use the same data type to achieve that outcome
     class Health : PlayerBoost
     {
         public override void Boost(string player)
@@ -97,6 +100,7 @@ namespace BoostStrategy
         }
     }
 
+    //this class acts as a constructor to define the behavior of the data type being passed in by the user
     class BoostingMethod
     {
         private string Player;
